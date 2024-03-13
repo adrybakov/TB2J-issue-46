@@ -1,0 +1,10 @@
+&inputpp 
+   outdir = './'
+   prefix = 'Fe'
+   seedname = 'iron_up'
+   spin_component = 'up'
+   write_mmn = .true.
+   write_amn = .true.
+   write_unk = .false.
+/
+

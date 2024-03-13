@@ -1,0 +1,48 @@
+
+TB2J version 0.8.2.1
+Copyright (C) 2018-2024  TB2J group.
+This software is distributed with the 2-Clause BSD License, without any warranty. For more details, see the LICENSE file delivered with this software.
+
+
+Reading atomic structure from file ./POSCAR.
+Cannot read atomic structure from file ./POSCAR. Trying to read from Wannier input.
+Reading atomic structure from file ./iron_up.win.
+
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/TB2J/manager.py", line 49, in gen_exchange
+    atoms = read(os.path.join(path, posfile))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ase/io/formats.py", line 736, in read
+    return next(_iread(filename, slice(index, None), format, io,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ase/parallel.py", line 275, in new_generator
+    for result in generator(*args, **kwargs):
+  File "/usr/local/lib/python3.11/site-packages/ase/io/formats.py", line 793, in _iread
+    fd = open_with_compression(filename, mode)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ase/io/formats.py", line 551, in open_with_compression
+    return open(filename, mode)
+           ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './POSCAR'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/bin/wann2J.py", line 216, in <module>
+    run_wann2J()
+  File "/usr/local/bin/wann2J.py", line 184, in run_wann2J
+    gen_exchange(
+  File "/usr/local/lib/python3.11/site-packages/TB2J/manager.py", line 60, in gen_exchange
+    atoms = parse_atoms(fname)
+            ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/TB2J/wannier/w90_parser.py", line 134, in parse_atoms
+    atoms = Atoms(symbols=symbols, cell=cell, scaled_positions=taus)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ase/atoms.py", line 208, in __init__
+    self.new_array('numbers', symbols2numbers(symbols), int)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/ase/symbols.py", line 22, in symbols2numbers
+    numbers.append(atomic_numbers[s])
+                   ~~~~~~~~~~~~~~^^^
+KeyError: 'Fe1'
